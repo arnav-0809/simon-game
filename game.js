@@ -1,4 +1,3 @@
-
 var buttonColors=["red","blue","green","yellow"];
 
 var pattern=[];
