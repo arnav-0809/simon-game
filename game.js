@@ -4,7 +4,7 @@ var pattern=[];
 var userpattern=[];
 
 var level=0;
-
+var begin=0;
 start();
 
 function nextSequence()
@@ -46,16 +46,20 @@ function check(pressedcolor)
 
 
 $(".btn").on('click',function(){
-    var pressedcolor=this.id;
-    userpattern.push(pressedcolor);
-    animatePress(pressedcolor)
-    sound(pressedcolor);
-    check(pressedcolor);
+    if(begin===1)
+    {
+        var pressedcolor=this.id;
+        userpattern.push(pressedcolor);
+        animatePress(pressedcolor)
+        sound(pressedcolor);
+       check(pressedcolor);
+    }
 });
 
 function start()
  {
      $("body").one("keypress",function(){
+       begin=1;
        nextSequence();
      });
 }
@@ -82,5 +86,6 @@ function startOver()
     userpattern=[];
     $("h1").text("Game Over,Press A Key to Start");
     level=0;
+    begin=0;
     start();
 }
